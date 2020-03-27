@@ -17,6 +17,10 @@ namespace GrumpyChirperMod.Extensions
 
             // this is a weird place to hook in
             // but it works for now
+
+            //IGrumpyChirper chirper = new GrumpyChirper();
+            //chirper.SendMessage("Name", "Message");
+
             var senderId = MessageManager.instance.GetRandomResidentID();
             var message = new TestMessage(senderId);
             MessageManager.instance.QueueMessage(message);
@@ -24,7 +28,6 @@ namespace GrumpyChirperMod.Extensions
 
         public void OnLevelUnloading()
         {
-
             Trace.WriteLine("[GrumpyChirperMod] OnLevelUnloading");
         }
 

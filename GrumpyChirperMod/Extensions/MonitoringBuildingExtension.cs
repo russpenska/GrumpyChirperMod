@@ -11,6 +11,9 @@ namespace GrumpyChirperMod.Extensions
 
         public override void OnBuildingCreated(ushort id)
         {
+            // can we look up the id and find out what 
+            // kind of building this is?
+
             Trace.WriteLine($"[GrumpyChirperMod] A building was created with id: {id}");
             base.OnBuildingCreated(id);
         }

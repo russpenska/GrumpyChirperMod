@@ -1,4 +1,4 @@
-﻿namespace GrumpyChirperMod.Messages
+﻿namespace GrumpyChirperMod.Messaging.Messages
 {
     class TestMessage : MessageBase
     {
