@@ -26,6 +26,9 @@ namespace GrumpyChirperMod.Extensions
         public void OnLevelLoaded(LoadMode mode)
         {
             Trace.WriteLine("[GrumpyChirperMod] OnLevelLoaded - sending a message...");
+
+            var randomName = _grumpyEngine.GetRandomName();
+            var randomMessage = _grumpyEngine.GetRandomMessage();
             _chirperMessageSender.SendMessage("Grumpy Bob", "Oh great. You're back. #getalife");
         }
 
