@@ -2,24 +2,19 @@ namespace GrumpyChirperMod.Messaging
 {
     public class TestMessage : MessageBase
     {
-        public TestMessage(string name, string message)
+        private readonly uint _senderId;
+        private readonly string _name;
+        private readonly string _message;
+
+        public TestMessage(uint senderId, string name, string message)
         {
-            // todo set _senderId
+            _senderId = senderId;
+            _name = name ?? throw new System.ArgumentNullException(nameof(name));
+            _message = message ?? throw new System.ArgumentNullException(nameof(message));
         }
 
-        public override uint GetSenderID()
-        {
-            return base.GetSenderID();
-        }
-
-        public override string GetSenderName()
-        {
-            return base.GetSenderName();
-        }
-
-        public override string GetText()
-        {
-            return base.GetText();
-        }
+        public override uint GetSenderID() => _senderId;
+        public override string GetSenderName() => _name;
+        public override string GetText() => _message;
     }
 }
