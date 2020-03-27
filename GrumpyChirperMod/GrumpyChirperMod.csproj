@@ -51,6 +51,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Extensions\MonitoringBuildingExtension.cs" />
+    <Compile Include="Extensions\MonitoringLoadingExtension.cs" />
+    <Compile Include="Messages\TestMessage.cs" />
     <Compile Include="ModInformation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
