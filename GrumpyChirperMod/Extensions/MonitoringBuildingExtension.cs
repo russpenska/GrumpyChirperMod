@@ -1,6 +1,7 @@
 ﻿using GrumpyChirperMod.Messaging;
 using ICities;
 using System.Diagnostics;
+using System.Linq;
 
 namespace GrumpyChirperMod.Extensions
 {
@@ -23,8 +24,8 @@ namespace GrumpyChirperMod.Extensions
             // can we look up the id and find out what 
             // kind of building this is?
 
-            Trace.WriteLine($"[GrumpyChirperMod] A building was created with id: {id}");
-            _chirperMessageSender.SendMessage("George & Russ", $"This message brought to you by ID {id}.");
+            //Trace.WriteLine($"[GrumpyChirperMod] A building was created with id: {id}");
+            //_chirperMessageSender.SendMessage("George & Russ", $"Building types for id {id}:");
             base.OnBuildingCreated(id);
         }
 
@@ -32,6 +33,14 @@ namespace GrumpyChirperMod.Extensions
         {
             Trace.WriteLine($"[GrumpyChirperMod] A building was relocated with id: {id}");
             base.OnBuildingRelocated(id);
+        }
+
+        public override void OnCreated(IBuilding building)
+        {
+            Trace.WriteLine($"[GrumpyChirperMod] A building was created!");
+
+            _chirperMessageSender.SendMessage("George & Russ", $"A building was created!");
+            base.OnCreated(building);
         }
     }
 }

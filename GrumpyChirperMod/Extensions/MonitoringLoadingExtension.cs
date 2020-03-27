@@ -1,4 +1,4 @@
-﻿using GrumpyChirperMod.Messaging.Messages;
+﻿using GrumpyChirperMod.Messaging;
 using ICities;
 using System.Diagnostics;
 
@@ -6,6 +6,18 @@ namespace GrumpyChirperMod.Extensions
 {
     public class MonitoringLoadingExtension : ILoadingExtension
     {
+        private IChirperMessageSender _chirperMessageSender;
+
+        public MonitoringLoadingExtension()
+            : this(new ChirperMessageSender())
+        {
+        }
+
+        public MonitoringLoadingExtension(IChirperMessageSender chirperMessageSender)
+        {
+            _chirperMessageSender = chirperMessageSender ?? throw new System.ArgumentNullException(nameof(chirperMessageSender));
+        }
+
         public void OnCreated(ILoading loading)
         {
             Trace.WriteLine("[GrumpyChirperMod] OnCreated");
@@ -14,16 +26,7 @@ namespace GrumpyChirperMod.Extensions
         public void OnLevelLoaded(LoadMode mode)
         {
             Trace.WriteLine("[GrumpyChirperMod] OnLevelLoaded - sending a message...");
-
-            // this is a weird place to hook in
-            // but it works for now
-
-            //IGrumpyChirper chirper = new GrumpyChirper();
-            //chirper.SendMessage("Name", "Message");
-
-            var senderId = MessageManager.instance.GetRandomResidentID();
-            var message = new TestMessage(senderId);
-            MessageManager.instance.QueueMessage(message);
+            _chirperMessageSender.SendMessage("Grumpy Bob", "Oh great. You're back. #getalife");
         }
 
         public void OnLevelUnloading()
