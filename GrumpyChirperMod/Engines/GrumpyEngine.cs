@@ -19,7 +19,7 @@ namespace GrumpyChirperMod.Engines
         private static readonly string[] LoadingMessages = new string[] 
         { 
             "Don't you have anything better to do? #sigh", 
-            "Oh good the mayor's back. #killmenow", 
+            "Oh good the mayor's back. #giveup", 
             "Another beautiful day in the worst city ever!",
             "BREAKING: The mayor unveils plans to somehow make things even worse.",
             "Oh great. You're back. #getalife"
