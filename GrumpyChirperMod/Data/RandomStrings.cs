@@ -7,7 +7,14 @@
             "Grumpy Bob",
             "Dave The Grouch",
             "Angry Rob",
-            "Irritated Irene"
+            "Irritated Irene",
+            "Elon Musk",
+            "Sulky Sally",
+            "Simon The Unimpressed",
+            "Whiney Wesley",
+            "Drunk Steve",
+            "Old Man Bob",
+            "Mabel The Miserable",
         };
 
         public static string[] LoadingMessages() => new string[]
