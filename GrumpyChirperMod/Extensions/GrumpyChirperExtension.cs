@@ -17,7 +17,7 @@ namespace GrumpyChirperMod.Extensions
             :this(new ChirperMessageSender(),
                  new GrumpyEngine(new Random((int)DateTime.UtcNow.Ticks)),
                  new Random((int)DateTime.UtcNow.Ticks),
-                 0.33m)
+                 0.2m)
         {
         }
 
