@@ -50,7 +50,7 @@ namespace GrumpyChirperMod.Extensions
             }
 
             _chirperMessageSender.SendMessage(
-                _grumpyEngine.GetRandomName(),
+                _grumpyEngine.GetRandomName(message.senderName),
                 _grumpyEngine.GetRandomResponse(message));
         }
 

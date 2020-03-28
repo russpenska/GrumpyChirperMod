@@ -81,6 +81,17 @@ namespace GrumpyChirperMod.Engines
             return Names[index];
         }
 
+        public string GetRandomName(string invalidName)
+        {
+            string name;
+            do
+            {
+                name = GetRandomName();
+            } while (name == invalidName);
+
+            return name;
+        }
+
         public string GetRandomResponse(IChirperMessage message)
         {
             var index = _random.Next(0, Responses.Length);
