@@ -1,4 +1,5 @@
 using GrumpyChirperMod.Grumpiness;
+using ICities;
 using System;
 using System.Linq;
 
@@ -31,6 +32,15 @@ namespace GrumpyChirperMod.Engines
             "Why can't we just build things in the right place to start with!?",
             "Just when the view was getting acceptable, someone goes and moves something.",
             "If you'd build enough medical buildings, you might be able to get something for that indecision."
+        };
+
+        private static readonly string[] Responses = new string[]
+        {
+            "EVERYONE PLEASE JUST BE QUIET",
+            "{previousHandle} you're talking utter nonsense, please stop.",
+            "Oh just give it a rest {previousHandle}. #tired",
+            "{previousHandle} Funny, I don't remember asking for your opinion!",
+            "{previousHandle} go back to school! Oh wait, no, the mayor still hasn't built enough :( #stupid"
         };
 
         public GrumpyEngine(Random random)
@@ -69,6 +79,17 @@ namespace GrumpyChirperMod.Engines
         {
             var index = _random.Next(0, Names.Length);
             return Names[index];
+        }
+
+        public string GetRandomResponse(IChirperMessage message)
+        {
+            var index = _random.Next(0, Responses.Length);
+            var response = Responses[index];
+
+            var previousHandle = "@" + message.senderName.Replace(" ", "");
+
+            return response.Replace("{previousHandle}", previousHandle);
+
         }
     }
 }
