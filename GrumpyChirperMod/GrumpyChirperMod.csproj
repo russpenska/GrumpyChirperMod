@@ -55,6 +55,7 @@
     <Compile Include="Extensions\GrumpyLoadingExtension.cs" />
     <Compile Include="Engines\GrumpyEngine.cs" />
     <Compile Include="Engines\IGrumpyEngine.cs" />
+    <Compile Include="Extensions\LoggingChirperExtension.cs" />
     <Compile Include="Grumpiness\GrumpinessTrigger.cs" />
     <Compile Include="Messaging\ChirperMessageSender.cs" />
     <Compile Include="Messaging\IChirperMessageSender.cs" />

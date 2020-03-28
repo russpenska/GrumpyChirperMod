@@ -11,7 +11,8 @@ namespace GrumpyChirperMod.Engines
         { 
             "Grumpy Bob", 
             "Dave The Grouch", 
-            "Angry Rob" 
+            "Angry Rob",
+            "Irritated Irene"
         };
         
         private static readonly string[] LoadingMessages = new string[] 
@@ -27,7 +28,9 @@ namespace GrumpyChirperMod.Engines
         {
             "MAKE YOUR MIND UP!",
             "We have literally the worst mayor in the world. #indecisive",
-            "Why can't we just build things in the right place to start with!?"
+            "Why can't we just build things in the right place to start with!?",
+            "Just when the view was getting acceptable, someone goes and moves something.",
+            "If you'd build enough medical buildings, you might be able to get something for that indecision."
         };
 
         public GrumpyEngine(Random random)
