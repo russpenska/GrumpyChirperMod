@@ -53,6 +53,8 @@
   <ItemGroup>
     <Compile Include="Extensions\MonitoringBuildingExtension.cs" />
     <Compile Include="Extensions\MonitoringLoadingExtension.cs" />
+    <Compile Include="GrumpyEngine.cs" />
+    <Compile Include="IGrumpyEngine.cs" />
     <Compile Include="Messaging\ChirperMessageSender.cs" />
     <Compile Include="Messaging\IChirperMessageSender.cs" />
     <Compile Include="Messaging\TestMessage.cs" />

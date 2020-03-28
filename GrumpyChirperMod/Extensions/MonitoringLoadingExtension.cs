@@ -1,4 +1,5 @@
-﻿using GrumpyChirperMod.Messaging;
+﻿using GrumpyChirperMod.Engines;
+using GrumpyChirperMod.Messaging;
 using ICities;
 using System.Diagnostics;
 
@@ -7,15 +8,21 @@ namespace GrumpyChirperMod.Extensions
     public class MonitoringLoadingExtension : ILoadingExtension
     {
         private IChirperMessageSender _chirperMessageSender;
+        private readonly IGrumpyEngine _grumpyEngine;
 
         public MonitoringLoadingExtension()
-            : this(new ChirperMessageSender())
+            : this(
+                  new ChirperMessageSender(),
+                  new GrumpyEngine(new System.Random()))
         {
         }
 
-        public MonitoringLoadingExtension(IChirperMessageSender chirperMessageSender)
+        public MonitoringLoadingExtension(
+            IChirperMessageSender chirperMessageSender,
+            IGrumpyEngine grumpyEngine)
         {
             _chirperMessageSender = chirperMessageSender ?? throw new System.ArgumentNullException(nameof(chirperMessageSender));
+            _grumpyEngine = grumpyEngine;
         }
 
         public void OnCreated(ILoading loading)
@@ -29,7 +36,7 @@ namespace GrumpyChirperMod.Extensions
 
             var randomName = _grumpyEngine.GetRandomName();
             var randomMessage = _grumpyEngine.GetRandomMessage();
-            _chirperMessageSender.SendMessage("Grumpy Bob", "Oh great. You're back. #getalife");
+            _chirperMessageSender.SendMessage(randomName, randomMessage);
         }
 
         public void OnLevelUnloading()
