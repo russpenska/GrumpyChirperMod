@@ -1,22 +1,30 @@
-﻿using GrumpyChirperMod.Messaging;
+﻿using GrumpyChirperMod.Engines;
+using GrumpyChirperMod.Grumpiness;
+using GrumpyChirperMod.Messaging;
 using ICities;
+using System;
 using System.Diagnostics;
-using System.Linq;
 
 namespace GrumpyChirperMod.Extensions
 {
-    public class MonitoringBuildingExtension : BuildingExtensionBase
+    public class GrumpyBuildingExtension : BuildingExtensionBase
     {
         private IChirperMessageSender _chirperMessageSender;
+        private readonly IGrumpyEngine _grumpyEngine;
 
-        public MonitoringBuildingExtension()
-            : this(new ChirperMessageSender())
+        public GrumpyBuildingExtension()
+            : this(
+                  new ChirperMessageSender(),
+                  new GrumpyEngine(new Random((int)DateTime.UtcNow.Ticks)))
         {
         }
 
-        public MonitoringBuildingExtension(IChirperMessageSender chirperMessageSender)
+        public GrumpyBuildingExtension(
+            IChirperMessageSender chirperMessageSender,
+            IGrumpyEngine grumpyEngine)
         {
             _chirperMessageSender = chirperMessageSender ?? throw new System.ArgumentNullException(nameof(chirperMessageSender));
+            _grumpyEngine = grumpyEngine ?? throw new ArgumentNullException(nameof(grumpyEngine));
         }
 
         public override void OnBuildingCreated(ushort id)
@@ -31,7 +39,10 @@ namespace GrumpyChirperMod.Extensions
 
         public override void OnBuildingRelocated(ushort id)
         {
-            Trace.WriteLine($"[GrumpyChirperMod] A building was relocated with id: {id}");
+            _chirperMessageSender.SendMessage(
+                _grumpyEngine.GetRandomName(), 
+                _grumpyEngine.GetRandomMessage(GrumpinessTrigger.BuildingRelocated));
+
             base.OnBuildingRelocated(id);
         }
 
@@ -39,7 +50,7 @@ namespace GrumpyChirperMod.Extensions
         {
             Trace.WriteLine($"[GrumpyChirperMod] A building was created!");
 
-            _chirperMessageSender.SendMessage("George & Russ", $"A building was created!");
+            // _chirperMessageSender.SendMessage("George & Russ", $"A building was created!");
             base.OnCreated(building);
         }
     }

@@ -51,16 +51,18 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Extensions\MonitoringBuildingExtension.cs" />
-    <Compile Include="Extensions\MonitoringLoadingExtension.cs" />
-    <Compile Include="GrumpyEngine.cs" />
-    <Compile Include="IGrumpyEngine.cs" />
+    <Compile Include="Extensions\GrumpyBuildingExtension.cs" />
+    <Compile Include="Extensions\GrumpyLoadingExtension.cs" />
+    <Compile Include="Engines\GrumpyEngine.cs" />
+    <Compile Include="Engines\IGrumpyEngine.cs" />
+    <Compile Include="Grumpiness\GrumpinessTrigger.cs" />
     <Compile Include="Messaging\ChirperMessageSender.cs" />
     <Compile Include="Messaging\IChirperMessageSender.cs" />
     <Compile Include="Messaging\TestMessage.cs" />
     <Compile Include="ModInformation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>mkdir "%25LOCALAPPDATA%25\Colossal Order\Cities_Skylines\Addons\Mods\$(SolutionName)"
